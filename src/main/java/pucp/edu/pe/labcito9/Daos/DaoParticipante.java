@@ -63,29 +63,40 @@ public class DaoParticipante extends BaseDao {
         return listaParticipante;
     }
 
-    public void actualizarParticipante(int idPais, String nombre, int poblacion, double tamanio) {
+    public void actualizarParticipante(int idParticipante,String nombre, String apellido,int edad,String genero,int idpais,int codigoAlumno) {
 
 
-        String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
+        String sentenciaSQL = "update paises set nombre = ?, apellido = ?, edad = ?, genero = ?, idpais = ?, alumno_codigoAlumno = ? where idparticipante = ?";
 
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-
-
+            pstmt.setString(1,nombre);
+            pstmt.setString(2,apellido);
+            pstmt.setInt(3,edad);
+            pstmt.setString(4,genero);
+            pstmt.setInt(5,idpais);
+            pstmt.setInt(6,codigoAlumno);
+            pstmt.setInt(7,idParticipante);
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void anadirParticipante(String nombrePais, String continentePais,int poblacion,double tamanio ){
+    public void anadirParticipante(String nombre, String apellido,int edad,String genero,int idpais,int codigoAlumno){
 
 
-        String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
-                "values (?,?,?,?);";
+        String sentenciaSQL = "insert into participante (nombre,apellido,edad,genero,idpais,alumno_codigoAlumno)\n" +
+                "values (?,?,?,?,?,?);";
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-
+            pstmt.setString(1,nombre);
+            pstmt.setString(2,apellido);
+            pstmt.setInt(3,edad);
+            pstmt.setString(4,genero);
+            pstmt.setInt(5,idpais);
+            pstmt.setInt(6,codigoAlumno);
             pstmt.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -97,7 +108,7 @@ public class DaoParticipante extends BaseDao {
     public void eliminarParticipante(int idParticipante) {
 
 
-        String sentenciaSQL = "delete from paises where idpais = ?;";
+        String sentenciaSQL = "delete from participante where idparticipante = ?;";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL);) {

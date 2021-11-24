@@ -69,7 +69,11 @@ public class PaisesServlet extends HttpServlet {
                 int poblacion = Integer.parseInt(poblacionStr);
                 double tamanio = Double.parseDouble(tamanioStr);
 
-                daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
+                try {
+                    daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 response.sendRedirect(request.getContextPath());
                 break;
             case "editar":
