@@ -1,4 +1,4 @@
-package pucp.edu.pe.labcito9;
+package pucp.edu.pe.labcito9.Servlets;
 
 import java.io.*;
 import javax.servlet.RequestDispatcher;
