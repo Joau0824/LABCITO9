@@ -25,8 +25,8 @@ public class DaoPaises {
             pstmt.setString(1,filtro);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                String nombrePais = rs.getString(2);
-                String nombreContinente = rs.getString(3);
+                String nombrePais = rs.getString(1);
+                String nombreContinente = rs.getString(2);
                 int poblacion = rs.getInt(3);
                 double tamanio = rs.getInt(4);
                 listaPaises.add(new BPaises(nombrePais,nombreContinente,poblacion,tamanio));
