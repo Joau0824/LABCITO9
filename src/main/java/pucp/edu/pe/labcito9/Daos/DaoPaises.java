@@ -83,6 +83,7 @@ public class  DaoPaises extends BaseDao{
     }
 
     public BPaises obtenerPaisPorId(String idPais){
+
         BPaises pais = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
