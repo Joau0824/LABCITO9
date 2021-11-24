@@ -13,8 +13,8 @@
                 <h1 style="color:#F0F8FF">Lista de Universidades</h1>
             </div>
 
-            <div class="my-2">
-                <a class="btn btn-info" href="">Añadir</a>
+            <div class="my-2 text-right">
+                <a class="btn btn-info" href="">Añadir universidad</a>
             </div>
 
             <div class="d-flex justify-content-center">

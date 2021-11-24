@@ -13,8 +13,8 @@
                 <h1 style="color:#F0F8FF">Lista de Universidades</h1>
             </div>
 
-            <div class="my-2">
-                <a class="btn btn-info" href="">Añadir</a>
+            <div class="my-2 text-right">
+                <a class="btn btn-info" href="">Añadir universidad</a>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -26,6 +26,8 @@
                                 <th>Continente</th>
                                 <th>Población</th>
                                 <th>Tamaño</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,8 +35,8 @@
                             <td> America</td>
                             <td> 32 000 000</td>
                             <td> 4000000</td>
-                            <td> <a class="btn btn-info" href=""><span class="fa fa-edit"></span></a> </td>
-                            <td> <a class="btn btn-info" href=""><span class="fa fa-trash"></span> </a> </td>
+                            <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
+                            <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
 
                         </tbody>
                     </table>
