@@ -1,5 +1,6 @@
-
+<%@ page import="pucp.edu.pe.labcito9.Beans.BPaises" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaPaises" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BPaises>" scope="request"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="paises"/>
@@ -32,15 +33,19 @@
                             </tr>
                         </thead>
                     <tbody>
+                        <%for(BPaises pais :listaPaises){
+                        %>
                         <tr>
-                            <td> Peru</td>
-                            <td> America</td>
-                            <td> 32 000 000</td>
-                            <td> 4000000</td>
+                            <td> <%=pais.getNombre()%></td>
+                            <td> <%=pais.getContinente()%></td>
+                            <td> <%=pais.getPoblacion()%></td>
+                            <td> <%=pais.getTamanio()%></td>
                             <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
                             <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
                         </tr>
-
+                        <%
+                            }
+                        %>
                     </tbody>
                     </table>
 
