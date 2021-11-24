@@ -10,14 +10,14 @@
             </jsp:include>
 
             <div class="mt-2 text-center">
-                <h1 style="color:#F0F8FF">Editar Participante </h1>
+                <h1 style="color:#F0F8FF">Agregar Participante </h1>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="<%=request.getContextPath()%>/listaParticipantes?action=editar">
+                    <form method="POST" action="<%=request.getContextPath()%>/listaParticipantes?action=agregar">
                         <div class="form-group">
                             <label for="idParticipante" style="color:#F0F8FF">ID</label>
-                            <input class="form-control" type="text" disabled name="idParticipante" id="idParticipante" value="">
+                            <input class="form-control" type="text" name="idParticipante" id="idParticipante" value="">
                         </div>
                         <div class="form-group">
                             <label for="nombre" style="color:#F0F8FF" >Nombre</label>
