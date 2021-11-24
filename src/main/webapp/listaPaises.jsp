@@ -1,6 +1,7 @@
 <%@ page import="pucp.edu.pe.labcito9.Beans.BPaises" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaPaises" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BPaises>" scope="request"/>
+<jsp:useBean id="idPais" type="java.lang.String" scope="request"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="paises"/>

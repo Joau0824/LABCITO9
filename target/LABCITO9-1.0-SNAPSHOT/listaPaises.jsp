@@ -1,6 +1,7 @@
 <%@ page import="pucp.edu.pe.labcito9.Beans.BPaises" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaPaises" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BPaises>" scope="request"/>
+<jsp:useBean id="idPais" type="java.lang.String" scope="request"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="paises"/>
@@ -15,6 +16,11 @@
                 <h1 style="color:#F0F8FF">Lista de paises</h1>
             </div>
 
+            <form method="post" action="<%=request.getContextPath()%>/?opcion=listar">
+                <div style="margin-top:30px;"class = "box">
+                    <input type="text" name="filter" class="src" autocomplete = "off">
+                </div>
+            </form>
             <div class="my-2 text-right">
                 <a class="btn btn-info" href="<%=request.getContextPath()%>?action=formAgregar">Añadir país</a>
             </div>
