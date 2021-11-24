@@ -31,6 +31,7 @@ public class DaoPaises {
             }
         }catch (SQLException e){
             e.printStackTrace();
+
         }
         return listaPaises;
     }
