@@ -31,11 +31,11 @@ public class UniversidadesServlet extends HttpServlet {
                 view.forward(request, response);
                 break;
             case "formEditar":
-                String id = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
+                String id = request.getParameter("idUniversidad") != null ? request.getParameter("idUniversidad"):"";
                 BUniversidad universidad = daoUniversidad.obtenerUniversidadPorId(id);
                 if(universidad != null){
                     request.setAttribute("universidad",universidad);
-                    RequestDispatcher view1 = request.getRequestDispatcher("editarPais.jsp");
+                    RequestDispatcher view1 = request.getRequestDispatcher("editarUniversidad.jsp");
                     view1.forward(request, response);
                 }else{
                     response.sendRedirect(request.getContextPath()+ "");
@@ -43,9 +43,9 @@ public class UniversidadesServlet extends HttpServlet {
                 break;
 
             case "borrar":
-                String idstr = request.getParameter("idPais");
+                String idstr = request.getParameter("idUniversidad");
                 int id1 = Integer.parseInt(idstr);
-                daoUniversidad.eliminarPais(id1);
+                daoUniversidad.eliminarUniversidad(id1);
                 response.sendRedirect(request.getContextPath() + "");
                 break;
         }
