@@ -6,7 +6,6 @@
     </jsp:include>
     <body>
         <div class='container'>
-            <!-- Incluir el navbar indicando el nombre de página correcto para que se señale la sección actual -->
             <jsp:include page="/includes/navbar.jsp">
                 <jsp:param name="page" value="paises"/>
             </jsp:include>
@@ -26,7 +25,12 @@
                                 <th>Tamaño</th>
                             </tr>
                         </thead>
-
+                    <tbody>
+                        <td> Peru</td>
+                        <td> America</td>
+                        <td> 32 000 000</td>
+                        <td> 4000000</td>
+                    </tbody>
                     </table>
                 </div>
             </div>

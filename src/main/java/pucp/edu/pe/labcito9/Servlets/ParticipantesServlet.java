@@ -5,11 +5,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ParticipantesServlet", value = "/ParticipantesServlet")
+@WebServlet(name = "ParticipantesServlet", value = "/listaParticipantes")
 public class ParticipantesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        RequestDispatcher view;
+        view = request.getRequestDispatcher("listaParticipantes.jsp");
+        view.forward(request, response);
     }
 
     @Override
