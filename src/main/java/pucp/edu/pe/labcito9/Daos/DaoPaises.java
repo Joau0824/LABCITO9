@@ -6,7 +6,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class  DaoPaises extends BaseDao{
-
     private static final String user = "root";
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
@@ -85,14 +84,9 @@ public class  DaoPaises extends BaseDao{
     public BPaises obtenerPaisPorId(String idPais){
 
         BPaises pais = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         String sentenciaSQL = " SELECT * FROM paises WHERE idpais = ?;";
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+        try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
 
             pstmt.setString(1,idPais);

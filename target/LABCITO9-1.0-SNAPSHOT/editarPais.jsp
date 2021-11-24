@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="pais" scope="request" type="pucp.edu.pe.labcito9.Beans.BPaises"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Editar Pais"/>
@@ -14,22 +15,22 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="">
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=editar">
                         <div class="form-group">
                             <label for="id" style="color:#F0F8FF">ID</label>
-                            <input class="form-control" type="text" disabled name="idAlbum" id="id" value="">
+                            <input class="form-control" type="text" disabled name="idAlbum" id="id" value="<%=pais.getIdPais()%>">
                         </div>
                         <div class="form-group">
                             <label for="nombre" style="color:#F0F8FF" >Nombre</label>
-                            <input class="form-control" type="text" name="nombreAlbum" id="nombre" value="">
+                            <input class="form-control" type="text" name="nombreAlbum" id="nombre" value="<%=pais.getNombre()%>">
                         </div>
                         <div class="form-group">
                             <label for="poblacion" style="color:#F0F8FF" >Poblacion</label>
-                            <input class="form-control" type="text" name="poblacion" id="poblacion" value="">
+                            <input class="form-control" type="text" name="poblacion" id="poblacion" value="<%=pais.getPoblacion()%>">
                         </div>
                         <div class="form-group">
                             <label for="tamanio" style="color:#F0F8FF" >Tamaño</label>
-                            <input class="form-control" type="text" name="tamanio" id="tamanio" value="">
+                            <input class="form-control" type="text" name="tamanio" id="tamanio" value="<%=pais.getTamanio()%>">
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         <a class="btn btn-danger" href="#">Cancelar</a>

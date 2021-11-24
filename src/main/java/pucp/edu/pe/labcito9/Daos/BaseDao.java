@@ -9,13 +9,13 @@ public class BaseDao {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        }catch (ClassNotFoundException ex){
-            ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
         String user = "root";
         String password = "root";
-        String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
+        String url = "jdbc:mysql://localhost:3306/lab9";
         return DriverManager.getConnection(url, user,password);
     }
 }

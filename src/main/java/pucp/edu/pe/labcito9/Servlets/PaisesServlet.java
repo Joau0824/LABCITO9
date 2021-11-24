@@ -32,6 +32,8 @@ public class PaisesServlet extends HttpServlet {
             case "formEditar":
                 String id = request.getParameter("id") == null ? "id" : request.getParameter("1");
                 request.setAttribute("id",id);
+                BPaises pais = daoPaises.obtenerPaisPorId(id);
+                request.setAttribute("pais",pais);
                 view = request.getRequestDispatcher("editarPais.jsp");
                 view.forward(request, response);
                 break;
@@ -58,7 +60,11 @@ public class PaisesServlet extends HttpServlet {
                 System.out.println("Inicio de la funcion");
                 System.out.println(poblacion);
                 System.out.println(tamanio);
-                daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
+                try {
+                    daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 response.sendRedirect(request.getContextPath());
                 break;
             case "editar":

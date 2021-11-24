@@ -15,6 +15,11 @@
                 <h1 style="color:#F0F8FF">Lista de paises</h1>
             </div>
 
+            <form method="post" action="<%=request.getContextPath()%>/?opcion=listar">
+                <div style="margin-top:30px;"class = "box">
+                    <input type="text" name="filter" class="src" autocomplete = "off">
+                </div>
+            </form>
             <div class="my-2 text-right">
                 <a class="btn btn-info" href="<%=request.getContextPath()%>?action=formAgregar">Añadir país</a>
             </div>
