@@ -16,7 +16,7 @@
             </div>
 
             <div class="my-2 text-right">
-                <a class="btn btn-info" href="">Añadir país</a>
+                <a class="btn btn-info" href="<%=request.getContextPath()%>?action=formAgregar">Añadir país</a>
             </div>
 
             <div class="d-flex justify-content-center">

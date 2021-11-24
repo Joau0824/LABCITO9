@@ -55,10 +55,11 @@ public class PaisesServlet extends HttpServlet {
                 double tamanio = Double.parseDouble(tamanioStr);
                 try {
                     daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
+                    response.sendRedirect(request.getContextPath());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                response.sendRedirect(request.getContextPath());
+
                 break;
         }
     }

@@ -16,19 +16,19 @@
                 <div class="w-75">
                     <form method="POST" action="">
                         <div class="form-group">
-                            <label for="idAlbum">ID</label>
-                            <input class="form-control" type="text" disabled name="idAlbum" id="idAlbum" value="">
+                            <label for="id">ID</label>
+                            <input class="form-control" type="text" disabled name="idAlbum" id="id" value="">
                         </div>
                         <div class="form-group">
-                            <label for="nombreAlbum">Nombre</label>
-                            <input class="form-control" type="text" name="nombreAlbum" id="nombreAlbum" value="">
+                            <label for="nombre">Nombre</label>
+                            <input class="form-control" type="text" name="nombreAlbum" id="nombre" value="">
                         </div>
                         <div class="form-group">
-                            <label for="nombreAlbum">Poblacion</label>
+                            <label for="poblacion">Poblacion</label>
                             <input class="form-control" type="text" name="poblacion" id="poblacion" value="">
                         </div>
                         <div class="form-group">
-                            <label for="nombreAlbum">Tamaño</label>
+                            <label for="tamanio">Tamaño</label>
                             <input class="form-control" type="text" name="tamanio" id="tamanio" value="">
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
