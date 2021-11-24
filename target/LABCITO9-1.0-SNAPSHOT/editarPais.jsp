@@ -36,7 +36,7 @@
                             <input class="form-control" type="text" name="tamanio" id="tamanio" value="<%=pais.getTamanio()%>">
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
-                        <a class="btn btn-danger" href="#">Cancelar</a>
+                        <a class="btn btn-danger" href="<%=request.getContextPath()%>/">Cancelar</a>
                     </form>
                 </div>
             </div>

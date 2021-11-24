@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 @WebServlet(name = "PaisesServlet", value = "")
@@ -20,6 +21,9 @@ public class PaisesServlet extends HttpServlet {
         switch(action) {
             case "listar":
                 String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
+                System.out.println(filter);
+                System.out.println("DIEGO");
+                System.out.println("com1");
                 ArrayList<BPaises> listaPaises = daoPaises.obtenerListaPaises(filter);
                 request.setAttribute("listaPaises",listaPaises);
                 view = request.getRequestDispatcher("listaPaises.jsp");
@@ -81,8 +85,8 @@ public class PaisesServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"");
                 break;
             case "listar":
-                String fitro_continente = request.getParameter("continente") != null ? request.getParameter("continente"):"";
-                response.sendRedirect(request.getContextPath()+"/?filter="+fitro_continente);
+                String filtro_continente = request.getParameter("idcontinente") != null ? request.getParameter("idcontinente"):"";
+                response.sendRedirect(request.getContextPath()+"?action=listar&filter="+filtro_continente);
         }
     }
 }
