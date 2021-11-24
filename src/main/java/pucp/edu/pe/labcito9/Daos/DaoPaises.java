@@ -102,6 +102,7 @@ public class  DaoPaises extends BaseDao{
             pstmt.setString(1,idPais);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
+
                     int id_pais = rs.getInt(1);
                     String nombre = rs.getString(2);
                     int poblacion = rs.getInt(4);
