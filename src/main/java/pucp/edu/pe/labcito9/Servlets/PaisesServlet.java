@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "PaisesServlet", value = "")
@@ -24,11 +25,31 @@ public class PaisesServlet extends HttpServlet {
                 view = request.getRequestDispatcher("listaPaises.jsp");
                 view.forward(request, response);
                 break;
+            case "agregar":
+                view = request.getRequestDispatcher("agregarPais.jsp");
+                view.forward(request, response);
+                break;
+            case "editar":
+                view = request.getRequestDispatcher("editarPais.jsp");
+                view.forward(request, response);
+                break;
+            case "borrar":
+
+                break;
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action") != null ? request.getParameter("action") : "formAgregar";
 
+        DaoPaises daoPaises = new DaoPaises();
+
+        switch (action){
+            case "formAgregar":
+
+                response.sendRedirect(request.getContextPath());
+                break;
+        }
     }
 }
