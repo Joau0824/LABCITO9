@@ -44,7 +44,7 @@
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
-                        <a  href="<%=request.getContextPath()%>/listaParticipantes" class="btn btn-danger">Cancelar</a>
+                        <a href="<%=request.getContextPath()%>/listaParticipantes" class="btn btn-danger">Cancelar</a>
                     </form>
                 </div>
             </div>

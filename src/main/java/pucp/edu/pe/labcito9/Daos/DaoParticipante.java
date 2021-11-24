@@ -48,6 +48,7 @@ public class DaoParticipante extends BaseDao {
         try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
             ResultSet rs = pstmt.executeQuery();
+            System.out.println("PROPA");
             while(rs.next()){
                 int idparticipante = rs.getInt(1);
                 String nombre = rs.getString(2);
@@ -55,7 +56,7 @@ public class DaoParticipante extends BaseDao {
                 int edad=rs.getInt(4);
                 String nacionalidad = rs.getString(5);
                 String genero=rs.getString(6);
-                listaParticipante.add(new BParticipante(idparticipante ,nombre,apellidos,edad,nacionalidad,genero));
+                listaParticipante.add(new BParticipante(idparticipante,nombre,apellidos,edad,genero,nacionalidad));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -78,14 +79,19 @@ public class DaoParticipante extends BaseDao {
         }
     }
 
-    public void anadirParticipante(String nombrePais, String continentePais,int poblacion,double tamanio ){
+    public void anadirParticipante(String nombre, String apellido,int edad,String genero,int idpais){
 
 
-        String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
-                "values (?,?,?,?);";
+        String sentenciaSQL = "insert into participante (nombre,apellido,edad,genero,idpais)\n" +
+                "values (?,?,?,?,?);";
+
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-
+            pstmt.setString(1,nombre);
+            pstmt.setString(2,apellido);
+            pstmt.setInt(3,edad);
+            pstmt.setString(4,genero);
+            pstmt.setInt(5,idpais);
             pstmt.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -139,6 +145,30 @@ public class DaoParticipante extends BaseDao {
         return null;
     }
 
+    public int buscarIdpais(String pais){
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String sentenciaSQL="select idpais from paises p where p.nombre = ?;";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
+            pstmt.setString(1,pais);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    int idpais = rs.getInt(1);
+                    return idpais;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 
 }

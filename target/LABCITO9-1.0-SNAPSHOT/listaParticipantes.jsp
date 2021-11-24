@@ -1,5 +1,6 @@
-
+<%@ page import="pucp.edu.pe.labcito9.Beans.BParticipante" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaParticipantes" scope="request" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BParticipante>"/>
 
 <html>
     <jsp:include page="/static/head.jsp">
@@ -17,7 +18,7 @@
             </div>
 
             <div class="my-2 text-right">
-                <a class="btn btn-info" href="">Añadir participante</a>
+                <a class="btn btn-info" href="<%=request.getContextPath()%>/listaParticipantes?action=formAgregar">Añadir participante</a>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
@@ -34,13 +35,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td> Peru</td>
-                            <td> America</td>
-                            <td> 32 000 000</td>
-                            <td> 4000000</td>
-                            <td> 4000000</td>
-                            <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
-                            <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
+                            <%for(BParticipante participante : listaParticipantes){%>
+                            <tr>
+                                <td><%=participante.getNombre()%></td>
+                                <td><%=participante.getApellido()%></td>
+                                <td><%=participante.getEdad()%></td>
+                                <td><%=participante.getNacionalidad()%></td>
+                                <td><%=participante.getGenero()%></td>
+                                <td><a class="btn btn-primary" href="<%=request.getContextPath()%>/listaParticipantes?action=formEditar%idParticipante=<%=participante.getIdParticipante()%>"><span class="fa fa-edit"></span></a></td>
+                                <td><a class="btn btn-danger" href="<%=request.getContextPath()%>/listaParticipantes?action=borrar"><span class="fa fa-trash"></span></a></td>
+                            </tr>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>

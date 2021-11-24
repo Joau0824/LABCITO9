@@ -3,6 +3,9 @@ package pucp.edu.pe.labcito9.Beans;
 public class BParticipante {
 
     private int idParticipante;
+
+
+
     private String nombre;
     private String apellido;
     private int edad;
@@ -24,15 +27,16 @@ public class BParticipante {
         this.idPais = idPais;
         Alumno_codigo = alumno_codigo;
     }
-
-    public BParticipante(int idParticipante,String nombre, String apellido, int edad, String genero, String nacionalidad) {
+    public BParticipante(int idParticipante, String nombre, String apellido, int edad, String genero, String nacionalidad) {
         this.idParticipante = idParticipante;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.genero = genero;
-        this.setNacionalidad(nacionalidad);
+        this.nacionalidad = nacionalidad;
     }
+
+
 
     public int getIdParticipante() {
         return idParticipante;
