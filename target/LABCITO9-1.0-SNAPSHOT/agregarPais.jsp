@@ -10,7 +10,7 @@
             </jsp:include>
 
             <div class="mt-2 text-center">
-                <h1>Agregar Pais</h1>
+                <h1 style="color:#F0F8FF">Agregar Pais</h1>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">

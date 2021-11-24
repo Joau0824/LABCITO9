@@ -5,21 +5,16 @@ import pucp.edu.pe.labcito9.Beans.BPaises;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DaoPaises {
+public class  DaoPaises extends BaseDao{
 
     private static final String user = "root";
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
 
     public ArrayList<BPaises> obtenerListaPaises(String filter) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         ArrayList<BPaises> listaPaises = new ArrayList<>();
         String sentenciaSQL = "select p.nombre, p.continente, p.poblacion, p.tamanio from paises p where p.continente like ? order by p.nombre;";
-        try(Connection conn = DriverManager.getConnection(url,user,pass);
+        try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
             String filtro = "%" + filter + "%";
             pstmt.setString(1,filtro);
@@ -38,16 +33,12 @@ public class DaoPaises {
     }
 
     public void actualizarPais(BPaises pais) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
 
         String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
 
 
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+        try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
 
             pstmt.setString(1, pais.getNombre());
@@ -60,15 +51,11 @@ public class DaoPaises {
     }
 
     public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
 
         String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
                 "values (?,?,?,?);";
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+        try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
             pstmt.setString(1,nombrePais);
             pstmt.setString(2,continentePais);
@@ -83,15 +70,11 @@ public class DaoPaises {
     }
 
     public void eliminarPais(String idPais) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
 
         String sentenciaSQL = "delete from paises where idpais = ?;";
 
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+        try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL);) {
             pstmt.setString(1, idPais);
             pstmt.executeUpdate();
