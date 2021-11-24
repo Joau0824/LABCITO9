@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DaoPaises {
+
     private static final String user = "root";
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
@@ -30,10 +31,10 @@ public class DaoPaises {
             }
         }catch (SQLException e){
             e.printStackTrace();
+
         }
         return listaPaises;
-        }
-
-
     }
 
+
+}
