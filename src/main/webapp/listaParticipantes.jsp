@@ -24,6 +24,8 @@
                                 <th>Continente</th>
                                 <th>Población</th>
                                 <th>Tamaño</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +33,8 @@
                             <td> America</td>
                             <td> 32 000 000</td>
                             <td> 4000000</td>
+                            <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
+                            <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
                         </tbody>
                     </table>
                 </div>
