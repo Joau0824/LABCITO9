@@ -1,36 +1,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="universidad" type="pucp.edu.pe.labcito9.Beans.BUniversidad" scope="request"/>
 <html>
     <jsp:include page="/static/head.jsp">
-        <jsp:param name="title" value="Editar Universidad"/>
+        <jsp:param name="title" value="Editar Participante"/>
     </jsp:include>
     <body>
         <div class='container'>
             <jsp:include page="/includes/navbar.jsp">
-                <jsp:param name="page" value="universidades"/>
+                <jsp:param name="page" value="participantes"/>
             </jsp:include>
 
             <div class="mt-2 text-center">
-                <h1 style="color:#F0F8FF">Editar Universidad </h1>
+                <h1 style="color:#F0F8FF">Agregar Participante </h1>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="">
+                    <form method="POST" action="<%=request.getContextPath()%>/listaParticipantes?action=agregar">
                         <div class="form-group">
-                            <label for="idUniversidad" style="color:#F0F8FF">ID</label>
-                            <input class="form-control" type="text" disabled name="idUniversidad" id="idUniversidad" value="">
+                            <label for="idParticipante" style="color:#F0F8FF">ID</label>
+                            <input class="form-control" type="text" name="idParticipante" id="idParticipante" value="">
                         </div>
                         <div class="form-group">
-                            <label for="pais" style="color:#F0F8FF" >País</label>
+                            <label for="nombre" style="color:#F0F8FF" >Nombre</label>
+                            <input class="form-control" type="text" name="nombre" id="nombre" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido" style="color:#F0F8FF" >Apellido</label>
+                            <input class="form-control" type="text" name="apellido" id="apellido" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="edad" style="color:#F0F8FF" >Edad</label>
+                            <input class="form-control" type="text" name="edad" id="edad" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="pais" style="color:#F0F8FF" >Pais</label>
                             <input class="form-control" type="text" name="pais" id="pais" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="ranking" style="color:#F0F8FF" >Ranking</label>
-                            <input class="form-control" type="text" name="ranking" id="ranking" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="fotoUrl" style="color:#F0F8FF" >Foto de la universidad</label>
-                            <input class="form-control" type="text" name="fotoUrl" id="fotoUrl" value="">
                         </div>
                         <div class="form-group">
                             <label for="genero" style="color:#F0F8FF" >Genero</label>
