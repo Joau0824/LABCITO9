@@ -29,6 +29,7 @@ public class BPaises {
         this.tamanio = tamanio;
     }
 
+
     public BPaises(int idPais, String nombre, int poblacion, double tamanio) {
         this.idPais = idPais;
         this.nombre = nombre;
