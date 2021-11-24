@@ -1,6 +1,6 @@
 package pucp.edu.pe.labcito9.Beans;
 
-public class BAlumnos {
+public class BAlumnos extends BParticipante {
 
     private int codigoAlumno;
     private double promedioPonderado;

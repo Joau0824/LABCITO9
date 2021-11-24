@@ -27,6 +27,7 @@
                                 <th>Ranking</th>
                                 <th>Numero de alumnos</th>
                                 <th>Foto</th>
+                                <th>Alumnos</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -37,6 +38,7 @@
                             <td> 32 000 000</td>
                             <td> 4000000</td>
                             <td> <img style="width: 150px; height: 150px;" src ="" ></td>
+                            <td><a class="btn btn-primary" href="">Lista de alumnos</a></td>
                             <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
                             <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
 

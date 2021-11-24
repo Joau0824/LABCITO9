@@ -7,6 +7,7 @@ public class BParticipante {
     private String apellido;
     private int edad;
     private String genero;
+    private String nacionalidad;
     private int idPais;
     private int Alumno_codigo;
 
@@ -24,6 +25,13 @@ public class BParticipante {
         Alumno_codigo = alumno_codigo;
     }
 
+    public BParticipante(String nombre, String apellido, int edad, String genero, String nacionalidad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.genero = genero;
+        this.nacionalidad = nacionalidad;
+    }
 
     public int getIdParticipante() {
         return idParticipante;
