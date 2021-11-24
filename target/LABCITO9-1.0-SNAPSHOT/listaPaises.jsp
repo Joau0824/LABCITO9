@@ -16,7 +16,7 @@
             </div>
 
             <div class="my-2 text-right">
-                <a class="btn btn-info" href="">Añadir país</a>
+                <a class="btn btn-info" href="<%=request.getContextPath()%>?action=formAgregar">Añadir país</a>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -40,8 +40,8 @@
                             <td> <%=pais.getContinente()%></td>
                             <td> <%=pais.getPoblacion()%></td>
                             <td> <%=pais.getTamanio()%></td>
-                            <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
-                            <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
+                            <td><a class="btn btn-primary" href="<%=request.getContextPath()%>?action=formEditar&id=<%=pais.getIdPais()%>"><span class="fa fa-edit"></span></a></td>
+                            <td><a class="btn btn-danger" href="<%=request.getContextPath()%>?action=borrar&id=<%=pais.getIdPais()%>"><span class="fa fa-trash"></span></a></td>
                         </tr>
                         <%
                             }

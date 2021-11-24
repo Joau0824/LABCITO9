@@ -14,7 +14,7 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="<%=request.getContextPath()%>/?action=agregar">
+                    <form method="POST" action="<%=request.getContextPath()%>?action=agregar">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input class="form-control" type="text" name="nombre" id="nombre">
