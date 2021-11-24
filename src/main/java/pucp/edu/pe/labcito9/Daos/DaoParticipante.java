@@ -43,19 +43,19 @@ public class DaoParticipante extends BaseDao {
 
     public ArrayList<BParticipante> obtenerListaParticipantes() {
         ArrayList<BParticipante> listaParticipante = new ArrayList<>();
-        String sentenciaSQL = "select pa.nombre,pa.apellido,pa.edad,p.nombre,pa.genero from participante pa inner join paises p on (p.idpais = pa.idpais);";
+        String sentenciaSQL = "select pa.idparticipante, pa.nombre,pa.apellido,pa.edad,p.nombre,pa.genero from participante pa inner join paises p on (p.idpais = pa.idpais);";
 
         try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-
-                String nombre = rs.getString(1);
-                String apellidos = rs.getString(2);
-                int edad=rs.getInt(3);
-                String nacionalidad = rs.getString(4);
-                String genero=rs.getString(5);
-                listaParticipante.add(new BParticipante(nombre,apellidos,edad,nacionalidad,genero));
+                int idparticipante = rs.getInt(1);
+                String nombre = rs.getString(2);
+                String apellidos = rs.getString(3);
+                int edad=rs.getInt(4);
+                String nacionalidad = rs.getString(5);
+                String genero=rs.getString(6);
+                listaParticipante.add(new BParticipante(idparticipante ,nombre,apellidos,edad,nacionalidad,genero));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -110,7 +110,7 @@ public class DaoParticipante extends BaseDao {
 
     }
 
-    public BPaises obtenerParticipantePorId(String idParticipante){
+    public BParticipante obtenerParticipantePorId(String idParticipante){
 
 
         try {
@@ -119,13 +119,18 @@ public class DaoParticipante extends BaseDao {
             e.printStackTrace();
         }
 
-        String sentenciaSQL = " SELECT * FROM paises WHERE idpais = ?;";
+        String sentenciaSQL = "select pa.nombre,pa.apellido,pa.edad,p.nombre,pa.genero from participante pa inner join paises p on (p.idpais = pa.idpais) where participanteid = ?";
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
             pstmt.setString(1,idParticipante);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-
+                    String nombre = rs.getString(1);
+                    String apellidos = rs.getString(2);
+                    int edad=rs.getInt(3);
+                    String nacionalidad = rs.getString(4);
+                    String genero=rs.getString(5);
+                    return new BParticipante(Integer.parseInt(idParticipante),nombre,apellidos,edad,nacionalidad,genero);
                 }
             }
         } catch (SQLException e) {

@@ -26,7 +26,7 @@ public class  DaoUniversidad extends BaseDao{
                 int ranking = rs.getInt(3);
                 int numeroAlumnos = rs.getInt(4);
                 String urlFoto = rs.getString(5);
-                String nombrePais= rs.getString(6);listaUniversidades.add(new BUniversidad(idUniversidad,nombre,ranking,numeroAlumnos,urlFoto,nombrePais));
+                String nombrePais= rs.getString(7);listaUniversidades.add(new BUniversidad(idUniversidad,nombre,ranking,numeroAlumnos,urlFoto,nombrePais));
 
             }
         }catch (SQLException e){

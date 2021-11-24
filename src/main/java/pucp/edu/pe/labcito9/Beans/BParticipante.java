@@ -25,12 +25,13 @@ public class BParticipante {
         Alumno_codigo = alumno_codigo;
     }
 
-    public BParticipante(String nombre, String apellido, int edad, String genero, String nacionalidad) {
+    public BParticipante(int idParticipante,String nombre, String apellido, int edad, String genero, String nacionalidad) {
+        this.idParticipante = idParticipante;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.genero = genero;
-        this.nacionalidad = nacionalidad;
+        this.setNacionalidad(nacionalidad);
     }
 
     public int getIdParticipante() {
@@ -90,6 +91,11 @@ public class BParticipante {
     }
 
 
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
 
-
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
 }
