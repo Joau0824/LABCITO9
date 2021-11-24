@@ -41,6 +41,7 @@ public class PaisesServlet extends HttpServlet {
                 }
                 break;
 
+
             case "borrar":
                 String idstr = request.getParameter("idPais");
                 int id1 = Integer.parseInt(idstr);

@@ -34,6 +34,7 @@
                             </tr>
                         </thead>
                     <tbody>
+
                         <%for(BPaises pais: listaPaises){
                         %>
                         <tr>

@@ -12,6 +12,7 @@
                 <jsp:param name="page" value="paises"/>
             </jsp:include>
 
+
             <div class="mt-2 text-center">
                 <h1 style="color:#F0F8FF">Editar Pais </h1>
             </div>
