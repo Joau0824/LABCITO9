@@ -1,5 +1,6 @@
+<%@ page import="pucp.edu.pe.labcito9.Beans.BUniversidad" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listaUniversidades" scope="request" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BUniversidad>" />
+<jsp:useBean id="listaUniversidades" scope="request" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BUniversidad>"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="universidades"/>
@@ -34,15 +35,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td> Peru</td>
-                            <td> America</td>
-                            <td> 32 000 000</td>
-                            <td> 4000000</td>
-                            <td> <img style="width: 150px; height: 150px;" src ="" ></td>
-                            <td><a class="btn btn-primary" href="">Lista de alumnos</a></td>
-                            <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
-                            <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
-
+                            <%for(BUniversidad universidad : listaUniversidades){%>
+                            <tr>
+                                <td> <%=universidad.getNombre()%></td>
+                                <td> <%=universidad.getRanking()%></td>
+                                <td> <%=universidad.getNumeroAlumnos()%></td>
+                                <td> 4000000</td>
+                                <td> <img style="width: 150px; height: 150px;" src ="" ></td>
+                                <td><a class="btn btn-primary" href="">Lista de alumnos</a></td>
+                                <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
+                                <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
+                            </tr>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>

@@ -14,11 +14,12 @@ public class  DaoUniversidad extends BaseDao{
 
     public ArrayList<BUniversidad> obtenerListaUniversidades(String filter) {
         ArrayList<BUniversidad> listaUniversidades = new ArrayList<>();
-        String sentenciaSQL = "select *,p.nombre from universidades u inner join pais p on u.paises_idpais = p.idpais order by ? asc ;";
+        String sentenciaSQL = "select u.iduniversidad, u.nombre, u.ranking,(select count(*) from lab9.alumnos group by iduniversidad inner join universidad order by ? asc),u.foto, p.nombre from universidades u inner join pais p on u.paises_idpais = p.idpais order by ? asc ;";
         try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
             String filtro = "%" + filter + "%";
             pstmt.setString(1,filtro);
+            pstmt.setString(2,filtro);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int idUniversidad= rs.getInt(1);
@@ -26,9 +27,9 @@ public class  DaoUniversidad extends BaseDao{
                 int ranking = rs.getInt(3);
                 int numeroAlumnos = rs.getInt(4);
                 String urlFoto = rs.getString(5);
-                String nombrePais= rs.getString(7);listaUniversidades.add(new BUniversidad(idUniversidad,nombre,ranking,numeroAlumnos,urlFoto,nombrePais));
-
+                String nombrePais= rs.getString(6);listaUniversidades.add(new BUniversidad(idUniversidad,nombre,ranking,numeroAlumnos,urlFoto,nombrePais));
             }
+
         }catch (SQLException e){
             e.printStackTrace();
         }
