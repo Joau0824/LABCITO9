@@ -9,7 +9,7 @@ public class  DaoPaises extends BaseDao{
 
     private static final String user = "root";
     private static final String pass = "root";
-    private static final String url = "jdbc:mysql://hostname:3306/lab9?serverTimezone=America/Lima";
+    private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
 
     public ArrayList<BPaises> obtenerListaPaises(String filter) {
         ArrayList<BPaises> listaPaises = new ArrayList<>();
