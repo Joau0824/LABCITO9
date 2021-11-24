@@ -47,7 +47,18 @@ public class PaisesServlet extends HttpServlet {
 
         switch (action){
             case "agregar":
+                String nombre = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
+                String continente = request.getParameter("continente") != null ? request.getParameter("continente") : "";
+                String poblacionStr = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
+                String tamanioStr = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
+                int poblacion = Integer.parseInt(poblacionStr);
+                double tamanio = Double.parseDouble(tamanioStr);
 
+                try {
+                    daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 response.sendRedirect(request.getContextPath());
                 break;
         }

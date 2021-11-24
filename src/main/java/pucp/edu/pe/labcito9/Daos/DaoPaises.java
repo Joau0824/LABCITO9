@@ -76,9 +76,9 @@ public class DaoPaises {
             pstmt.setDouble(4,tamanio);
             pstmt.executeUpdate();
 
-        } /*catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 
