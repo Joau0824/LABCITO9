@@ -40,7 +40,7 @@
                             <td> <%=pais.getContinente()%></td>
                             <td> <%=pais.getPoblacion()%></td>
                             <td> <%=pais.getTamanio()%></td>
-                            <td><a class="btn btn-primary" href="<%=request.getContextPath()%>?action=editar&id=<%=pais.getIdPais()%>"><span class="fa fa-edit"></span></a></td>
+                            <td><a class="btn btn-primary" href="<%=request.getContextPath()%>?action=formEditar&id=<%=pais.getIdPais()%>"><span class="fa fa-edit"></span></a></td>
                             <td><a class="btn btn-danger" href="<%=request.getContextPath()%>?action=borrar&id=<%=pais.getIdPais()%>"><span class="fa fa-trash"></span></a></td>
                         </tr>
                         <%
