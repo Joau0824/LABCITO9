@@ -53,7 +53,6 @@ public class PaisesServlet extends HttpServlet {
                 String tamanioStr = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
                 int poblacion = Integer.parseInt(poblacionStr);
                 double tamanio = Double.parseDouble(tamanioStr);
-
                 try {
                     daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
                 } catch (SQLException e) {
