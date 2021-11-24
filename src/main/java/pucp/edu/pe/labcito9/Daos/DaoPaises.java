@@ -31,6 +31,7 @@ public class DaoPaises {
                 double tamanio = rs.getInt(4);
                 listaPaises.add(new BPaises(nombrePais,nombreContinente,poblacion,tamanio));
             }
+
         }catch (SQLException e){
             e.printStackTrace();
         }
