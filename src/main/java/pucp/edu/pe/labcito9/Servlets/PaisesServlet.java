@@ -25,11 +25,11 @@ public class PaisesServlet extends HttpServlet {
                 view = request.getRequestDispatcher("listaPaises.jsp");
                 view.forward(request, response);
                 break;
-            case "agregar":
+            case "formAgregar":
                 view = request.getRequestDispatcher("agregarPais.jsp");
                 view.forward(request, response);
                 break;
-            case "editar":
+            case "formEditar":
                 view = request.getRequestDispatcher("editarPais.jsp");
                 view.forward(request, response);
                 break;
@@ -41,12 +41,12 @@ public class PaisesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") != null ? request.getParameter("action") : "formAgregar";
+        String action = request.getParameter("action") != null ? request.getParameter("action") : "agregar";
 
         DaoPaises daoPaises = new DaoPaises();
 
         switch (action){
-            case "formAgregar":
+            case "agregar":
 
                 response.sendRedirect(request.getContextPath());
                 break;
