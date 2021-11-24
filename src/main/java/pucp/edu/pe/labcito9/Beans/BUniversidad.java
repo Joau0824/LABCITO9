@@ -8,18 +8,18 @@ public class BUniversidad {
     private int ranking;
     private int numeroAlumnos;
     private String foto;
-    private int paises_id;
+    private String pais;
 
     public BUniversidad() {
     }
 
-    public BUniversidad(int idUniversidad, String nombre, int ranking, int numeroAlumnos, String foto, int paises_id) {
+    public BUniversidad(int idUniversidad, String nombre, int ranking, int numeroAlumnos, String foto, String pais) {
         this.idUniversidad = idUniversidad;
         this.nombre = nombre;
         this.ranking = ranking;
         this.numeroAlumnos = numeroAlumnos;
         this.foto = foto;
-        this.paises_id = paises_id;
+        this.setPais(pais);
     }
 
     public int getIdUniversidad() {
@@ -62,12 +62,12 @@ public class BUniversidad {
         this.foto = foto;
     }
 
-    public int getPaises_id() {
-        return paises_id;
+
+    public String getPais() {
+        return pais;
     }
 
-    public void setPaises_id(int paises_id) {
-        this.paises_id = paises_id;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
-
 }
