@@ -6,11 +6,7 @@
     <body>
         <div class='container'>
             <jsp:include page="/includes/navbar.jsp">
-<<<<<<< HEAD
-                <jsp:param name="page" value="paises"/>
-=======
                 <jsp:param name="page" value="universidades"/>
->>>>>>> origin/master
             </jsp:include>
 
             <div class="mt-2 text-center">
