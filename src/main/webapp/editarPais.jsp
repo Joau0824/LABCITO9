@@ -10,7 +10,7 @@
             </jsp:include>
 
             <div class="mt-2 text-center">
-                <h1>Editar Pais </h1>
+                <h1 style="color:#F0F8FF">Editar Pais </h1>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
