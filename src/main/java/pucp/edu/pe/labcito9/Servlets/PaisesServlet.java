@@ -1,12 +1,12 @@
-package pucp.edu.pe.labcito9;
+package pucp.edu.pe.labcito9.Servlets;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "UniversidadesServlet", value = "/UniversidadesServlet")
-public class UniversidadesServlet extends HttpServlet {
+@WebServlet(name = "PaisesServlet", value = "/PaisesServlet")
+public class PaisesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

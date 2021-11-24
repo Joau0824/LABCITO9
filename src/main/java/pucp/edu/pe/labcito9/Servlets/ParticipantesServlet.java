@@ -1,4 +1,4 @@
-package pucp.edu.pe.labcito9;
+package pucp.edu.pe.labcito9.Servlets;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
