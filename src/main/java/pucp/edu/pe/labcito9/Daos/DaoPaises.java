@@ -37,5 +37,68 @@ public class DaoPaises {
         return listaPaises;
     }
 
+    public void actualizarPais(BPaises pais) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
+
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
+
+            pstmt.setString(1, pais.getNombre());
+            pstmt.setInt(2,pais.getPoblacion());
+            pstmt.setDouble(3,pais.getTamanio());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ) throws  SQLException{
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
+                "values (?,?,?,?);";
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
+            pstmt.setString(1,nombrePais);
+            pstmt.setString(2,continentePais);
+            pstmt.setInt(3,poblacion);
+            pstmt.setDouble(4,tamanio);
+            pstmt.executeUpdate();
+
+        } /*catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+
+    }
+
+    public void eliminarPais(String idPais) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String sentenciaSQL = "delete from paises where idpais = ?;";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL);) {
+            pstmt.setString(1, idPais);
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
 
 }
