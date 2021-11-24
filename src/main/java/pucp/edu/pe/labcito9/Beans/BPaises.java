@@ -4,6 +4,9 @@ public class BPaises {
 
 
     private int idPais;
+
+
+
     private String nombre;
     private String continente;
     private int poblacion;
@@ -13,6 +16,12 @@ public class BPaises {
     public BPaises() {
     }
 
+    public BPaises(String nombre, String continente, int poblacion, double tamanio) {
+        this.nombre = nombre;
+        this.continente = continente;
+        this.poblacion = poblacion;
+        this.tamanio = tamanio;
+    }
     public BPaises(int idPais, String nombre, String continente, int poblacion, double tamanio) {
         this.idPais = idPais;
         this.nombre = nombre;
