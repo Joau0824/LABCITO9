@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaUniversidades" scope="request" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BUniversidad>" />
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="universidades"/>
