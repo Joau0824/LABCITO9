@@ -15,6 +15,9 @@
                 <h1 style="color:#F0F8FF">Lista de Participantes</h1>
             </div>
 
+            <div class="my-2 text-right">
+                <a class="btn btn-info" href="">Añadir participante</a>
+            </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
                     <table class="table table-dark table-transparent table-hover" >

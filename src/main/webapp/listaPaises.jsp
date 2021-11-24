@@ -14,6 +14,10 @@
                 <h1 style="color:#F0F8FF">Lista de paises</h1>
             </div>
 
+            <div class="my-2 text-right">
+                <a class="btn btn-info" href="">Añadir país</a>
+            </div>
+
             <div class="d-flex justify-content-center">
                 <div class="w-75">
                     <table class="table table-dark table-transparent table-hover">
