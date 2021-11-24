@@ -55,7 +55,7 @@ public class  DaoPaises extends BaseDao{
         }
     }
 
-    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ) throws SQLException{
+    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
 
         System.out.println("Entre a anadir pais");
         String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +

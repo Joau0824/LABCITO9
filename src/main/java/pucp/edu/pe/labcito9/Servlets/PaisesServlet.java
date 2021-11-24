@@ -68,12 +68,7 @@ public class PaisesServlet extends HttpServlet {
                 String tamanioStr = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
                 int poblacion = Integer.parseInt(poblacionStr);
                 double tamanio = Double.parseDouble(tamanioStr);
-
-                try {
-                    daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
                 response.sendRedirect(request.getContextPath());
                 break;
             case "editar":

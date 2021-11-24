@@ -18,7 +18,7 @@
             </div>
 
             <div class="my-2 text-right">
-                <a class="btn btn-info" href="">Añadir participante</a>
+                <a class="btn btn-info" href="<%=request.getContextPath()%>/listaParticipantes?action=formAgregar">Añadir participante</a>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
