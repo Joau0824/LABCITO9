@@ -11,7 +11,7 @@ public class DaoPaises {
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
 
-    public ArrayList<BPaises> obtenerListaPaises() {
+    public ArrayList<BPaises> obtenerListaPaises(String filter) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -20,8 +20,9 @@ public class DaoPaises {
         ArrayList<BPaises> listaPaises = new ArrayList<>();
         String sentenciaSQL = "select p.nombre, p.continente, p.poblacion, p.tamanio from paises p where p.continente = ?;";
         try(Connection conn = DriverManager.getConnection(url,user,pass);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sentenciaSQL)){
+            PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
+            pstmt.setString(1,filter);
+            ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 String nombrePais = rs.getString(2);
                 String nombreContinente = rs.getString(3);

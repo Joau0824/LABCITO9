@@ -19,7 +19,7 @@ public class PaisesServlet extends HttpServlet {
         switch(action) {
             case "listar":
                 String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
-                ArrayList<BPaises> listaPaises = daoPaises.obtenerListaPaises();
+                ArrayList<BPaises> listaPaises = daoPaises.obtenerListaPaises(filter);
                 request.setAttribute("listaPaises",listaPaises);
                 view = request.getRequestDispatcher("listaPaises.jsp");
                 view.forward(request, response);
