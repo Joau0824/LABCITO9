@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class PaisesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
         DaoPaises daoPaises = new DaoPaises();
         RequestDispatcher view;
-        String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
         switch(action) {
             case "listar":
                 String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
@@ -30,13 +30,22 @@ public class PaisesServlet extends HttpServlet {
                 view.forward(request, response);
                 break;
             case "formEditar":
-                String id = request.getParameter("id") == null ? "id" : request.getParameter("1");
-                request.setAttribute("id",id);
-                view = request.getRequestDispatcher("editarPais.jsp");
-                view.forward(request, response);
+                String id = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
+                BPaises pais = daoPaises.obtenerPaisPorId(id);
+                if(pais != null){
+                    request.setAttribute("idPais",pais);
+                    RequestDispatcher view1 = request.getRequestDispatcher("editarPais.jsp");
+                    view1.forward(request, response);
+                }else{
+                    response.sendRedirect(request.getContextPath()+ "");
+                }
                 break;
-            case "borrar":
 
+            case "borrar":
+                String idstr = request.getParameter("idPais");
+                int id1 = Integer.parseInt(idstr);
+                daoPaises.eliminarPais(id1);
+                response.sendRedirect(request.getContextPath() + "");
                 break;
         }
     }
@@ -62,16 +71,15 @@ public class PaisesServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath());
                 break;
             case "editar":
+                String idPaisstr = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
                 String nombre1 = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
                 String poblacionStr1 = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
                 String tamanioStr1 = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
+                int idPais = Integer.parseInt(idPaisstr);
                 int poblacion1 = Integer.parseInt(poblacionStr1);
                 double tamanio1 = Double.parseDouble(tamanioStr1);
-                BPaises bpais = new BPaises();
-                bpais.setNombre(nombre1);
-                bpais.setPoblacion(poblacion1);
-                bpais.setTamanio(tamanio1);
-                daoPaises.actualizarPais(bpais);
+
+                daoPaises.actualizarPais(idPais,nombre1,poblacion1,tamanio1);
                 response.sendRedirect(request.getContextPath());
                 break;
         }

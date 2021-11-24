@@ -1,4 +1,7 @@
+<%@ page import="pucp.edu.pe.labcito9.Beans.BPaises" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% BPaises pais = (BPaises) request.getAttribute("idPais"); %>
+
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Editar Pais"/>
@@ -14,14 +17,14 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="<%=request.getContextPath()%>/?action=editar">
+                    <form method="POST" action="<%=request.getContextPath()%>?action=editar&idPais=<%=pais.getIdPais()%>">
                         <div class="form-group">
-                            <label for="id" style="color:#F0F8FF">ID</label>
-                            <input class="form-control" type="text" disabled name="idAlbum" id="id" value="">
+                            <label for="idPais" style="color:#F0F8FF">ID</label>
+                            <input class="form-control" type="text" value="<%=pais.getIdPais()%>" disabled name="idPais" id="idPais" >
                         </div>
                         <div class="form-group">
                             <label for="nombre" style="color:#F0F8FF" >Nombre</label>
-                            <input class="form-control" type="text" name="nombreAlbum" id="nombre" value="">
+                            <input class="form-control" type="text" name="nombrePais" id="nombre" value="">
                         </div>
                         <div class="form-group">
                             <label for="poblacion" style="color:#F0F8FF" >Poblacion</label>

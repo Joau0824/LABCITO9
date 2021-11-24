@@ -1,6 +1,7 @@
 <%@ page import="pucp.edu.pe.labcito9.Beans.BPaises" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listaPaises" type="java.util.ArrayList<pucp.edu.pe.labcito9.Beans.BPaises>" scope="request"/>
+<%ArrayList<BPaises> listaPaises = (ArrayList) request.getAttribute("listaPaises");%>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="paises"/>
@@ -33,15 +34,15 @@
                             </tr>
                         </thead>
                     <tbody>
-                        <%for(BPaises pais :listaPaises){
+                        <%for(BPaises pais: listaPaises){
                         %>
                         <tr>
                             <td> <%=pais.getNombre()%></td>
                             <td> <%=pais.getContinente()%></td>
                             <td> <%=pais.getPoblacion()%></td>
                             <td> <%=pais.getTamanio()%></td>
-                            <td><a class="btn btn-primary" href="<%=request.getContextPath()%>?action=formEditar&id=<%=pais.getIdPais()%>"><span class="fa fa-edit"></span></a></td>
-                            <td><a class="btn btn-danger" href="<%=request.getContextPath()%>?action=borrar&id=<%=pais.getIdPais()%>"><span class="fa fa-trash"></span></a></td>
+                            <td><a href="<%=request.getContextPath()%>?action=formEditar&idPais=<%=pais.getIdPais()%> "class="btn btn-primary" ><span class="fa fa-edit"></span></a></td>
+                            <td><a class="btn btn-danger" href="<%=request.getContextPath()%>?action=borrar&idPais=<%=pais.getIdPais()%>"><span class="fa fa-trash"></span></a></td>
                         </tr>
                         <%
                             }

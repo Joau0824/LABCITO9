@@ -13,18 +13,19 @@ public class  DaoPaises extends BaseDao{
 
     public ArrayList<BPaises> obtenerListaPaises(String filter) {
         ArrayList<BPaises> listaPaises = new ArrayList<>();
-        String sentenciaSQL = "select p.nombre, p.continente, p.poblacion, p.tamanio from paises p where p.continente like ? order by p.nombre;";
+        String sentenciaSQL = "select * from paises p where p.continente like ? order by p.nombre;";
         try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
             String filtro = "%" + filter + "%";
             pstmt.setString(1,filtro);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                String nombrePais = rs.getString(1);
-                String nombreContinente = rs.getString(2);
-                int poblacion = rs.getInt(3);
-                double tamanio = rs.getInt(4);
-                listaPaises.add(new BPaises(nombrePais,nombreContinente,poblacion,tamanio));
+                int idPais=rs.getInt(1);
+                String nombrePais = rs.getString(2);
+                String nombreContinente = rs.getString(3);
+                int poblacion = rs.getInt(4);
+                double tamanio = rs.getInt(5);
+                listaPaises.add(new BPaises(idPais,nombrePais,nombreContinente,poblacion,tamanio));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -32,7 +33,7 @@ public class  DaoPaises extends BaseDao{
         return listaPaises;
     }
 
-    public void actualizarPais(BPaises pais) {
+    public void actualizarPais(int idPais, String nombre, int poblacion, double tamanio) {
 
 
         String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
@@ -41,16 +42,17 @@ public class  DaoPaises extends BaseDao{
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
 
-            pstmt.setString(1, pais.getNombre());
-            pstmt.setInt(2,pais.getPoblacion());
-            pstmt.setDouble(3,pais.getTamanio());
+            pstmt.setString(1, nombre);
+            pstmt.setInt(2,poblacion);
+            pstmt.setDouble(3,tamanio);
+            pstmt.setInt(4,idPais);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ) throws SQLException{
+    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
 
         System.out.println("Entre a anadir pais");
         String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
@@ -63,19 +65,22 @@ public class  DaoPaises extends BaseDao{
             pstmt.setDouble(4,tamanio);
             pstmt.executeUpdate();
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
 
     }
 
-    public void eliminarPais(String idPais) {
+    public void eliminarPais(int idPais) {
 
 
         String sentenciaSQL = "delete from paises where idpais = ?;";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL);) {
-            pstmt.setString(1, idPais);
+            pstmt.setInt(1, idPais);
             pstmt.executeUpdate();
+
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -84,7 +89,7 @@ public class  DaoPaises extends BaseDao{
 
     public BPaises obtenerPaisPorId(String idPais){
 
-        BPaises pais = null;
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -94,22 +99,20 @@ public class  DaoPaises extends BaseDao{
         String sentenciaSQL = " SELECT * FROM paises WHERE idpais = ?;";
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-
             pstmt.setString(1,idPais);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    pais = new BPaises();
-                    pais.setNombre(rs.getString(2));
-                    pais.setContinente(rs.getString(3));
-                    pais.setPoblacion(rs.getInt(4));
-                    pais.setTamanio(rs.getDouble(5));
+                    int id_pais = rs.getInt(1);
+                    String nombre = rs.getString(2);
+                    int poblacion = rs.getInt(4);
+                    double tamanio = rs.getDouble(5);
+                    return new BPaises(id_pais,nombre,poblacion,tamanio);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return pais;
-
+        return null;
     }
 
 

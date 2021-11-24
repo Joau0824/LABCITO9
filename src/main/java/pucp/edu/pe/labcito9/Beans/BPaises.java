@@ -3,10 +3,9 @@ package pucp.edu.pe.labcito9.Beans;
 public class BPaises {
 
 
+
+
     private int idPais;
-
-
-
     private String nombre;
     private String continente;
     private int poblacion;
@@ -26,6 +25,13 @@ public class BPaises {
         this.idPais = idPais;
         this.nombre = nombre;
         this.continente = continente;
+        this.poblacion = poblacion;
+        this.tamanio = tamanio;
+    }
+
+    public BPaises(int idPais, String nombre, int poblacion, double tamanio) {
+        this.idPais = idPais;
+        this.nombre = nombre;
         this.poblacion = poblacion;
         this.tamanio = tamanio;
     }
