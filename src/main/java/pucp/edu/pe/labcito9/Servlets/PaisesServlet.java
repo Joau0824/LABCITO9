@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PaisesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
+        String action = request.getParameter("action") != null ? "listar" : request.getParameter("action");
         DaoPaises daoPaises = new DaoPaises();
         RequestDispatcher view;
         switch(action) {

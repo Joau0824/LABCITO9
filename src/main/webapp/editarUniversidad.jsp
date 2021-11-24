@@ -15,7 +15,7 @@
             <div class="d-flex justify-content-center">
                 <div class="w-75">
                     <form method="POST" action="">
-                        <div class="form-group">.0
+                        <div class="form-group">
                             <label for="idUniversidad" style="color:#F0F8FF">ID</label>
                             <input class="form-control" type="text" disabled name="idUniversidad" id="idUniversidad" value="">
                         </div>

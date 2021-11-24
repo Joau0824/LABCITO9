@@ -20,10 +20,28 @@
                 <a class="btn btn-info" href="<%=request.getContextPath()%>?action=formAgregar">Añadir país</a>
             </div>
 
+
+
+
             <div class="d-flex justify-content-center">
                 <div class="w-75">
                     <table class="table table-dark table-transparent table-hover">
                         <thead>
+                            <tr>
+                                <form action="">
+                                <div class="form-group">
+                                    <label for="continente" style="color:#F0F8FF" >Filtrar por continente</label>
+                                    <select name="continente" id="continente">
+                                        <option value="America">America</option>
+                                        <option value="Asia">Asia</option>
+                                        <option value="Europa">Europa</option>
+                                        <option value="Africa">Africa</option>
+                                        <option value="Oceania">Oceania</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                                </div>
+                                </form>
+                            </tr>
                             <tr>
                                 <th>Nombre</th>
                                 <th>Continente</th>
