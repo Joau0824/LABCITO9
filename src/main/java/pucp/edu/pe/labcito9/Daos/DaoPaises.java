@@ -59,7 +59,7 @@ public class DaoPaises {
         }
     }
 
-    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ) throws  SQLException{
+    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
