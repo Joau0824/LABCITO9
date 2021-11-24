@@ -31,6 +31,8 @@ public class ParticipantesServlet extends HttpServlet {
                 view.forward(request, response);
         }
 
+
+
     }
 
     @Override
