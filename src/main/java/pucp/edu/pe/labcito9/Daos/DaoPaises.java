@@ -50,7 +50,7 @@ public class  DaoPaises extends BaseDao{
         }
     }
 
-    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
+    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ) throws SQLException{
 
 
         String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
@@ -63,8 +63,6 @@ public class  DaoPaises extends BaseDao{
             pstmt.setDouble(4,tamanio);
             pstmt.executeUpdate();
 
-        }catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
@@ -83,5 +81,35 @@ public class  DaoPaises extends BaseDao{
         }
 
     }
+
+    public BPaises obtenerPaisPorId(String idPais){
+        BPaises pais = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String sentenciaSQL = " SELECT * FROM paises WHERE idpais = ?;";
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
+
+            pstmt.setString(1,idPais);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    pais = new BPaises();
+                    pais.setNombre(rs.getString(2));
+                    pais.setContinente(rs.getString(3));
+                    pais.setPoblacion(rs.getInt(4));
+                    pais.setTamanio(rs.getDouble(5));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pais;
+
+    }
+
 
 }
