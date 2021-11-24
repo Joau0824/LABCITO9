@@ -23,8 +23,6 @@ public class DaoPaises {
         try(Connection conn = DriverManager.getConnection(url,user,pass);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sentenciaSQL)){
-
-
             while(rs.next()){
                 String nombrePais = rs.getString(2);
                 String nombreContinente = rs.getString(3);
