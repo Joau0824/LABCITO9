@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="universidad" type="pucp.edu.pe.labcito9.Beans.BUniversidad" scope="request"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Editar Universidad"/>

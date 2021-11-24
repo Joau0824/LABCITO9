@@ -32,9 +32,9 @@ public class UniversidadesServlet extends HttpServlet {
                 break;
             case "formEditar":
                 String id = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
-                BUniversidad pais = daoUniversidad.obtenerUniversidadPorId(id);
-                if(pais != null){
-                    request.setAttribute("idPais",pais);
+                BUniversidad universidad = daoUniversidad.obtenerUniversidadPorId(id);
+                if(universidad != null){
+                    request.setAttribute("universidad",universidad);
                     RequestDispatcher view1 = request.getRequestDispatcher("editarPais.jsp");
                     view1.forward(request, response);
                 }else{

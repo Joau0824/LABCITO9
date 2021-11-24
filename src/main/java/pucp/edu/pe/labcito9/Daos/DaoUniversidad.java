@@ -21,7 +21,7 @@ public class  DaoUniversidad extends BaseDao{
             pstmt.setString(1,filtro);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                int idUniversidad=rs.getInt(1);
+                int idUniversidad= rs.getInt(1);
                 String nombre = rs.getString(2);
                 int ranking = rs.getInt(3);
                 int numeroAlumnos = rs.getInt(4);
