@@ -12,6 +12,7 @@ public class  DaoUniversidad extends BaseDao{
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
 
+
     public ArrayList<BUniversidad> obtenerListaUniversidades(String filter) {
         ArrayList<BUniversidad> listaUniversidades = new ArrayList<>();
         String sentenciaSQL = "select u.iduniversidad, u.nombre, u.ranking,(select count(*) from lab9.alumnos group by iduniversidad inner join universidad order by ? asc),u.foto, p.nombre from universidades u inner join pais p on u.paises_idpais = p.idpais order by ? asc ;";
