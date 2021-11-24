@@ -15,6 +15,21 @@
                 <h1 style="color:#F0F8FF">Lista de paises</h1>
             </div>
 
+            <div class="d-flex justify-content-center">
+                <div class="w-75">
+                    <table class="table table-dark table-transparent table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Continente</th>
+                                <th>Población</th>
+                                <th>Tamaño</th>
+                            </tr>
+                        </thead>
+                        
+                    </table>
+                </div>
+            </div>
 
         </div>
 
