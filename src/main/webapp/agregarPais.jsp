@@ -14,21 +14,21 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="<%=request.getContextPath()%>?action=agregar">
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=agregar" >
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre" style="color:#F0F8FF">Nombre</label>
                             <input class="form-control" type="text" name="nombre" id="nombre">
                         </div>
                         <div class="form-group">
-                            <label for="continente">Continente</label>
+                            <label for="continente" style="color:#F0F8FF">Continente</label>
                             <input class="form-control" type="text" name="continente" id="continente">
                         </div>
                         <div class="form-group">
-                            <label for="poblacion">Poblacion</label>
+                            <label for="poblacion" style="color:#F0F8FF" >Poblacion</label>
                             <input class="form-control" type="text" name="poblacion" id="poblacion">
                         </div>
                         <div class="form-group">
-                            <label for="tamanio">Tamaño</label>
+                            <label for="tamanio" style="color:#F0F8FF">Tamaño</label>
                             <input class="form-control" type="text" name="tamanio" id="tamanio">
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
