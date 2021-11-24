@@ -13,6 +13,10 @@
                 <h1 style="color:#F0F8FF">Lista de Universidades</h1>
             </div>
 
+            <div class="my-2">
+                <a class="btn btn-info" href="">Añadir</a>
+            </div>
+
             <div class="d-flex justify-content-center">
                 <div class="w-75">
                     <table class="table table-dark table-transparent table-hover">
@@ -29,12 +33,15 @@
                             <td> America</td>
                             <td> 32 000 000</td>
                             <td> 4000000</td>
+                            <td> <a class="btn btn-info" href=""><span class="fa fa-edit"></span></a> </td>
+                            <td> <a class="btn btn-info" href=""><span class="fa fa-trash"></span> </a> </td>
+
                         </tbody>
                     </table>
                 </div>
             </div>
 
         </div>
-
+        <jsp:include page="/static/scripts.jsp"/>
     </body>
 </html>

@@ -17,7 +17,7 @@
 
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <table class="table table-dark table-transparent table-hover">
+                    <table class="table table-dark table-transparent table-hover" >
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -37,6 +37,6 @@
             </div>
 
         </div>
-
+        <jsp:include page="/static/scripts.jsp"/>
     </body>
 </html>
