@@ -80,6 +80,9 @@ public class PaisesServlet extends HttpServlet {
                 daoPaises.actualizarPais(idPais,nombre1,poblacion1,tamanio1);
                 response.sendRedirect(request.getContextPath()+"");
                 break;
+            case "listar":
+                String fitro_continente = request.getParameter("continente") != null ? request.getParameter("continente"):"";
+                response.sendRedirect(request.getContextPath()+"/?filter="+fitro_continente);
         }
     }
 }

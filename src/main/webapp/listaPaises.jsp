@@ -28,7 +28,7 @@
                     <table class="table table-dark table-transparent table-hover">
                         <thead>
                             <tr>
-                                <form action="">
+                                <form action="<%=request.getContextPath()%>/?action=listar">
                                 <div class="form-group">
                                     <label for="continente" style="color:#F0F8FF" >Filtrar por continente</label>
                                     <select name="continente" id="continente">
