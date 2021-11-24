@@ -11,6 +11,7 @@ public class  DaoPaises extends BaseDao{
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
 
+
     public ArrayList<BPaises> obtenerListaPaises(String filter) {
         ArrayList<BPaises> listaPaises = new ArrayList<>();
         String sentenciaSQL = "select * from paises p where p.continente like ? order by p.nombre;";
@@ -55,7 +56,7 @@ public class  DaoPaises extends BaseDao{
         }
     }
 
-    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ) throws SQLException{
+    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
 
         System.out.println("Entre a anadir pais");
         String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
