@@ -35,7 +35,7 @@ public class UniversidadesServlet extends HttpServlet {
                 BUniversidad universidad = daoUniversidad.obtenerUniversidadPorId(id);
                 if(universidad != null){
                     request.setAttribute("universidad",universidad);
-                    RequestDispatcher view1 = request.getRequestDispatcher("editarPais.jsp");
+                    RequestDispatcher view1 = request.getRequestDispatcher("editarUniversidad.jsp");
                     view1.forward(request, response);
                 }else{
                     response.sendRedirect(request.getContextPath()+ "");
@@ -45,7 +45,7 @@ public class UniversidadesServlet extends HttpServlet {
             case "borrar":
                 String idstr = request.getParameter("idPais");
                 int id1 = Integer.parseInt(idstr);
-                daoUniversidad.eliminarPais(id1);
+                daoUniversidad.eliminarUniversidad(id1);
                 response.sendRedirect(request.getContextPath() + "");
                 break;
         }
