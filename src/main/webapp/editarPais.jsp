@@ -18,22 +18,22 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="<%=request.getContextPath()%>?action=editar&idPais=<%=pais.getIdPais()%>">
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=editar&idPais=<%=pais.getIdPais()%>">
                         <div class="form-group">
                             <label for="idPais" style="color:#F0F8FF">ID</label>
                             <input class="form-control" type="text" value="<%=pais.getIdPais()%>" disabled name="idPais" id="idPais" >
                         </div>
                         <div class="form-group">
                             <label for="nombre" style="color:#F0F8FF" >Nombre</label>
-                            <input class="form-control" type="text" name="nombrePais" id="nombre" value="">
+                            <input class="form-control" type="text" name="nombrePais" id="nombre" value="<%=pais.getNombre()%>">
                         </div>
                         <div class="form-group">
                             <label for="poblacion" style="color:#F0F8FF" >Poblacion</label>
-                            <input class="form-control" type="text" name="poblacion" id="poblacion" value="">
+                            <input class="form-control" type="text" name="poblacion" id="poblacion" value="<%=pais.getPoblacion()%>">
                         </div>
                         <div class="form-group">
                             <label for="tamanio" style="color:#F0F8FF" >Tamaño</label>
-                            <input class="form-control" type="text" name="tamanio" id="tamanio" value="">
+                            <input class="form-control" type="text" name="tamanio" id="tamanio" value="<%=pais.getTamanio()%>">
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                         <a class="btn btn-danger" href="#">Cancelar</a>

@@ -24,7 +24,7 @@ public class  DaoPaises extends BaseDao{
                 String nombrePais = rs.getString(2);
                 String nombreContinente = rs.getString(3);
                 int poblacion = rs.getInt(4);
-                double tamanio = rs.getInt(5);
+                double tamanio = rs.getDouble(5);
                 listaPaises.add(new BPaises(idPais,nombrePais,nombreContinente,poblacion,tamanio));
             }
         }catch (SQLException e){
@@ -46,6 +46,9 @@ public class  DaoPaises extends BaseDao{
             pstmt.setInt(2,poblacion);
             pstmt.setDouble(3,tamanio);
             pstmt.setInt(4,idPais);
+            System.out.println(nombre);
+            System.out.println(poblacion);
+            System.out.println(tamanio);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

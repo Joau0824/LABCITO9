@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="participantes"/>
@@ -24,9 +25,10 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Continente</th>
-                                <th>Población</th>
-                                <th>Tamaño</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Nacionalidad</th>
+                                <th>Genero</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -35,6 +37,7 @@
                             <td> Peru</td>
                             <td> America</td>
                             <td> 32 000 000</td>
+                            <td> 4000000</td>
                             <td> 4000000</td>
                             <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
                             <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>

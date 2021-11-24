@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PaisesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") != null ? "listar" : request.getParameter("action");
+        String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
         DaoPaises daoPaises = new DaoPaises();
         RequestDispatcher view;
         switch(action) {
@@ -41,7 +41,6 @@ public class PaisesServlet extends HttpServlet {
                 }
                 break;
 
-
             case "borrar":
                 String idstr = request.getParameter("idPais");
                 int id1 = Integer.parseInt(idstr);
@@ -65,23 +64,21 @@ public class PaisesServlet extends HttpServlet {
                 String tamanioStr = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
                 int poblacion = Integer.parseInt(poblacionStr);
                 double tamanio = Double.parseDouble(tamanioStr);
-                System.out.println("Inicio de la funcion");
-                System.out.println(poblacion);
-                System.out.println(tamanio);
+
                 daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
                 response.sendRedirect(request.getContextPath());
                 break;
             case "editar":
+
                 String idPaisstr = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
-                String nombre1 = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
+                String nombre1 = request.getParameter("nombrePais") != null ? request.getParameter("nombrePais") : "";
                 String poblacionStr1 = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
                 String tamanioStr1 = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
                 int idPais = Integer.parseInt(idPaisstr);
                 int poblacion1 = Integer.parseInt(poblacionStr1);
                 double tamanio1 = Double.parseDouble(tamanioStr1);
-
                 daoPaises.actualizarPais(idPais,nombre1,poblacion1,tamanio1);
-                response.sendRedirect(request.getContextPath());
+                response.sendRedirect(request.getContextPath()+"");
                 break;
         }
     }
