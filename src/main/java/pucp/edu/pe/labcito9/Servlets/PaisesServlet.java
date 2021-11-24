@@ -56,6 +56,19 @@ public class PaisesServlet extends HttpServlet {
                 daoPaises.anadirPais(nombre,continente,poblacion,tamanio);
                 response.sendRedirect(request.getContextPath());
                 break;
+            case "editar":
+                String nombre1 = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
+                String poblacionStr1 = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
+                String tamanioStr1 = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
+                int poblacion1 = Integer.parseInt(poblacionStr1);
+                double tamanio1 = Double.parseDouble(tamanioStr1);
+                BPaises bpais = new BPaises();
+                bpais.setNombre(nombre1);
+                bpais.setPoblacion(poblacion1);
+                bpais.setTamanio(tamanio1);
+                daoPaises.actualizarPais(bpais);
+                response.sendRedirect(request.getContextPath());
+                break;
         }
     }
 }
