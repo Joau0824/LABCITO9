@@ -37,7 +37,6 @@ public class  DaoUniversidad extends BaseDao{
 
     public void actualizarPais(int idPais, String nombre, int poblacion, double tamanio) {
 
-
         String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
 
 
@@ -92,27 +91,21 @@ public class  DaoUniversidad extends BaseDao{
 
     }
 
-    public BPaises obtenerPaisPorId(String idPais){
-
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public BUniversidad obtenerUniversidadPorId(String id){
 
         String sentenciaSQL = " SELECT * FROM paises WHERE idpais = ?;";
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+        try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-            pstmt.setString(1,idPais);
+            pstmt.setString(1,id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-
-                    int id_pais = rs.getInt(1);
+                    int idUniversidad = rs.getInt(1);
                     String nombre = rs.getString(2);
-                    int poblacion = rs.getInt(4);
-                    double tamanio = rs.getDouble(5);
-                    return new BPaises(id_pais,nombre,poblacion,tamanio);
+                    int ranking = rs.getInt(3);
+                    int numeroAlumnos = rs.getInt(4);
+                    String urlFoto = rs.getString(5);
+                    String nombrePais= rs.getString(6);
+                    return new BUniversidad(idUniversidad,nombre,ranking,numeroAlumnos,urlFoto,nombrePais);
                 }
             }
         } catch (SQLException e) {
