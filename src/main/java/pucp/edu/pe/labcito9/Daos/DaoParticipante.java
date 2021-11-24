@@ -12,6 +12,7 @@ public class DaoParticipante extends BaseDao {
     private static final String pass = "root";
     private static final String url = "jdbc:mysql://localhost:3306/lab9?serverTimezone=America/Lima";
 
+
     public boolean edad(int edad){
         boolean valido = false;
         if(edad>18){
@@ -147,29 +148,19 @@ public class DaoParticipante extends BaseDao {
     }
 
     public int buscarIdpais(String pais){
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        String sentenciaSQL="select idpais from paises p where p.nombre = ?;";
-
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+        String sentenciaSQL="select p.idpais from paises p where p.nombre like ?;";
+        try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-            pstmt.setString(1,pais);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    int idpais = rs.getInt(1);
-                    return idpais;
-                }
-            }
+            pstmt.setString(1,pais+"%");
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            int idpais = rs.getInt(1);
+            System.out.println(idpais);
+            return idpais;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return 0;
     }
-
 }
