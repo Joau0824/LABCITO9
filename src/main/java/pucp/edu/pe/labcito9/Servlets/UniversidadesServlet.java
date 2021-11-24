@@ -31,7 +31,7 @@ public class UniversidadesServlet extends HttpServlet {
                 view.forward(request, response);
                 break;
             case "formEditar":
-                String id = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
+                String id = request.getParameter("idUniversidad") != null ? request.getParameter("idUniversidad"):"";
                 BUniversidad universidad = daoUniversidad.obtenerUniversidadPorId(id);
                 if(universidad != null){
                     request.setAttribute("universidad",universidad);
@@ -43,7 +43,7 @@ public class UniversidadesServlet extends HttpServlet {
                 break;
 
             case "borrar":
-                String idstr = request.getParameter("idPais");
+                String idstr = request.getParameter("idUniversidad");
                 int id1 = Integer.parseInt(idstr);
                 daoUniversidad.eliminarUniversidad(id1);
                 response.sendRedirect(request.getContextPath() + "");
