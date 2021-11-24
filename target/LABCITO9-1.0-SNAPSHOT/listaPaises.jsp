@@ -39,7 +39,7 @@
 
                     </tbody>
                     </table>
-                    <a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a>
+
                 </div>
             </div>
 
