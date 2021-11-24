@@ -35,38 +35,36 @@ public class  DaoUniversidad extends BaseDao{
         return listaUniversidades;
     }
 
-    public void actualizarPais(int idPais, String nombre, int poblacion, double tamanio) {
+    public void actualizarUniversidad(int idUniversidad, String nombre, String ranking , int numeroAlumnos , String foto) {
 
-        String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
+        String sentenciaSQL = "update universidad set nombre = ?, ranking = ?, numeroAlumnos = ?, foto = ? where iduniversidad = ?;";
 
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
 
             pstmt.setString(1, nombre);
-            pstmt.setInt(2,poblacion);
-            pstmt.setDouble(3,tamanio);
-            pstmt.setInt(4,idPais);
-            System.out.println(nombre);
-            System.out.println(poblacion);
-            System.out.println(tamanio);
+            pstmt.setString(2,ranking);
+            pstmt.setInt(3,numeroAlumnos);
+            pstmt.setString(4,foto);
+            pstmt.setInt(5,idUniversidad);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void anadirPais(String nombrePais, String continentePais,int poblacion,double tamanio ){
+    public void anadirUniversidad(String nombre, String ranking , int numeroAlumnos , String foto, int idpais ){
 
-        System.out.println("Entre a anadir pais");
-        String sentenciaSQL = "insert into paises (nombre,continente,poblacion,tamanio)\n" +
-                "values (?,?,?,?);";
+        String sentenciaSQL = "insert into universidad (nombre,ranking,numeroAlumnos,foto,paises_idpais)\n" +
+                "values (?,?,?,?,?);";
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-            pstmt.setString(1,nombrePais);
-            pstmt.setString(2,continentePais);
-            pstmt.setInt(3,poblacion);
-            pstmt.setDouble(4,tamanio);
+            pstmt.setString(1, nombre);
+            pstmt.setString(2,ranking);
+            pstmt.setInt(3,numeroAlumnos);
+            pstmt.setString(4,foto);
+            pstmt.setInt(5,idpais);
             pstmt.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -75,14 +73,14 @@ public class  DaoUniversidad extends BaseDao{
 
     }
 
-    public void eliminarPais(int idPais) {
+    public void eliminarUniversidad(int iduniversidad) {
 
 
-        String sentenciaSQL = "delete from paises where idpais = ?;";
+        String sentenciaSQL = "delete from universidad where iduniversidad = ?;";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL);) {
-            pstmt.setInt(1, idPais);
+            pstmt.setInt(1, iduniversidad);
             pstmt.executeUpdate();
 
         }catch (SQLException e){
@@ -93,7 +91,7 @@ public class  DaoUniversidad extends BaseDao{
 
     public BUniversidad obtenerUniversidadPorId(String id){
 
-        String sentenciaSQL = " SELECT * FROM paises WHERE idpais = ?;";
+        String sentenciaSQL = " SELECT * FROM universidad WHERE iduniversidad = ?;";
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
             pstmt.setString(1,id);
