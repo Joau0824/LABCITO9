@@ -2,8 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <jsp:include page="/static/head.jsp">
-        <jsp:param name="title" value="paises"/>
+        <jsp:param name="title" value="participantes"/>
     </jsp:include>
+
     <body>
         <div class='container'>
             <jsp:include page="/includes/navbar.jsp">
@@ -11,7 +12,7 @@
             </jsp:include>
 
             <div class="mt-2 text-center">
-                <h1 style="color:#F0F8FF">Lista de paises</h1>
+                <h1 style="color:#F0F8FF">Lista de Participantes</h1>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -25,12 +26,12 @@
                                 <th>Tamaño</th>
                             </tr>
                         </thead>
-                    <tbody>
-                        <td> Peru</td>
-                        <td> America</td>
-                        <td> 32 000 000</td>
-                        <td> 4000000</td>
-                    </tbody>
+                        <tbody>
+                            <td> Peru</td>
+                            <td> America</td>
+                            <td> 32 000 000</td>
+                            <td> 4000000</td>
+                        </tbody>
                     </table>
                 </div>
             </div>
