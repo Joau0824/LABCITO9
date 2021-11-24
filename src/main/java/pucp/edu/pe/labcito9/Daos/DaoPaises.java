@@ -17,7 +17,6 @@ public class DaoPaises {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         ArrayList<BPaises> listaPaises = new ArrayList<>();
         String sentenciaSQL = "select p.nombre, p.continente, p.poblacion, p.tamanio from paises p where p.continente = ?;";
         try(Connection conn = DriverManager.getConnection(url,user,pass);
