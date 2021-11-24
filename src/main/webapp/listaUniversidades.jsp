@@ -6,7 +6,7 @@
     <body>
         <div class='container'>
             <jsp:include page="/includes/navbar.jsp">
-                <jsp:param name="page" value="paises"/>
+                <jsp:param name="page" value="universidades"/>
             </jsp:include>
 
             <div class="mt-2 text-center">
