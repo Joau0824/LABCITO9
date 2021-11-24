@@ -18,10 +18,11 @@ public class DaoPaises {
             e.printStackTrace();
         }
         ArrayList<BPaises> listaPaises = new ArrayList<>();
-        String sentenciaSQL = "select p.nombre, p.continente, p.poblacion, p.tamanio from paises p where p.continente = ?;";
+        String sentenciaSQL = "select p.nombre, p.continente, p.poblacion, p.tamanio from paises p where p.continente like ?;";
         try(Connection conn = DriverManager.getConnection(url,user,pass);
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
-            pstmt.setString(1,filter);
+            String filtro = "%" + filter + "%";
+            pstmt.setString(1,filtro);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 String nombrePais = rs.getString(2);
@@ -32,7 +33,6 @@ public class DaoPaises {
             }
         }catch (SQLException e){
             e.printStackTrace();
-
         }
         return listaPaises;
     }
