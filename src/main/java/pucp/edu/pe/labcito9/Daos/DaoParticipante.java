@@ -65,10 +65,10 @@ public class DaoParticipante extends BaseDao {
         return listaParticipante;
     }
 
-    public void actualizarParticipante(String nombre, String apellido,int edad,String genero,int idpais) {
+    public void actualizarParticipante(String nombre, String apellido,int edad,String genero,int idPais,int idparticipante) {
 
 
-        String sentenciaSQL = "update participante set nombre = ?, apellido = ?, edad = ?, genero = ?, idpais= ? where idpais = ?";
+        String sentenciaSQL = "update participante set nombre = ?, apellido = ?, edad = ?, genero = ?, idpais= ? where idparticipante = ?";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
@@ -76,7 +76,8 @@ public class DaoParticipante extends BaseDao {
             pstmt.setString(2,apellido);
             pstmt.setInt(3,edad);
             pstmt.setString(4,genero);
-            pstmt.setInt(5,idpais);
+            pstmt.setInt(5,idPais);
+            pstmt.setInt(6,idparticipante);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,7 +124,7 @@ public class DaoParticipante extends BaseDao {
     public BParticipante obtenerParticipantePorId(String idParticipante){
 
 
-        String sentenciaSQL = "select pa.nombre,pa.apellido,pa.edad,p.nombre,pa.genero from participante pa inner join paises p on (p.idpais = pa.idpais) where participanteid = ?";
+        String sentenciaSQL = "select pa.nombre,pa.apellido,pa.edad,p.nombre,pa.genero from participante pa inner join paises p on (p.idpais = pa.idpais) where idparticipante = ?";
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
             pstmt.setString(1,idParticipante);

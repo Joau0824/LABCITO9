@@ -27,7 +27,7 @@ public class BParticipante {
         this.idPais = idPais;
         Alumno_codigo = alumno_codigo;
     }
-    public BParticipante(int idParticipante, String nombre, String apellido, int edad, String genero, String nacionalidad) {
+    public BParticipante(int idParticipante, String nombre, String apellido, int edad, String nacionalidad,String genero) {
         this.idParticipante = idParticipante;
         this.nombre = nombre;
         this.apellido = apellido;

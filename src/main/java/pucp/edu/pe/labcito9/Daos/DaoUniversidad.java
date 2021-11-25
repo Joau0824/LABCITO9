@@ -15,7 +15,7 @@ public class  DaoUniversidad extends BaseDao{
 
     public ArrayList<BUniversidad> obtenerListaUniversidades(String filter) {
         ArrayList<BUniversidad> listaUniversidades = new ArrayList<>();
-        String sentenciaSQL = "select u.iduniversidad, u.nombre, u.ranking,(select count(*) from lab9.alumnos group by iduniversidad inner join universidad order by ? asc),u.foto, p.nombre from universidades u inner join pais p on u.paises_idpais = p.idpais order by ? asc ;";
+        String sentenciaSQL = "select u.iduniversidad, u.nombre, u.ranking,(select count(*) from lab9.alumnos group by iduniversidad inner join universidad order by ? asc),u.foto, p.nombre from universidades u inner join pais p on u.paises_idpais = p.idpais order by ? ;";
         try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sentenciaSQL);){
             String filtro = "%" + filter + "%";

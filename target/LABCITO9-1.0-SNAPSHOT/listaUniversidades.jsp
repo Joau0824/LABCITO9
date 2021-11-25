@@ -38,13 +38,13 @@
                             <%for(BUniversidad universidad : listaUniversidades){%>
                             <tr>
                                 <td> <%=universidad.getNombre()%></td>
+                                <td> <%=universidad.getPais()%></td>
                                 <td> <%=universidad.getRanking()%></td>
                                 <td> <%=universidad.getNumeroAlumnos()%></td>
-                                <td> 4000000</td>
                                 <td> <img style="width: 150px; height: 150px;" src ="" ></td>
-                                <td><a class="btn btn-primary" href="">Lista de alumnos</a></td>
-                                <td><a class="btn btn-primary" href=""><span class="fa fa-edit"></span></a></td>
-                                <td><a class="btn btn-danger" href=""><span class="fa fa-trash"></span></a></td>
+                                <td><a class="btn btn-primary" href="/listaAlumnos">Lista de alumnos</a></td>
+                                <td><a class="btn btn-primary" href="<%=request.getContextPath()%>/listaUniversidades?action=formEditar&idUniversidad=<%=universidad.getIdUniversidad()%>"><span class="fa fa-edit"></span></a></td>
+                                <td><a class="btn btn-danger" href="<%=request.getContextPath()%>/listaUniversidades?action=borrar&idUniversidad=<%=universidad.getIdUniversidad()%>"><span class="fa fa-trash"></span></a></td>
                             </tr>
                             <%}%>
                         </tbody>

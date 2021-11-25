@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="participante" scope="request" type="pucp.edu.pe.labcito9.Beans.BParticipante"/>
+<jsp:useBean id="participante" type="pucp.edu.pe.labcito9.Beans.BParticipante" scope="request" />
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Editar Participante"/>
@@ -11,11 +11,11 @@
             </jsp:include>
 
             <div class="mt-2 text-center">
-                <h1 style="color:#F0F8FF">Editar Participante </h1>
+                <h1 style="color:#F0F8FF">Editar Alumno</h1>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <form method="POST" action="<%=request.getContextPath()%>/listaParticipantes?action=editar&idParticipante=<%=participante.getIdParticipante()%>">
+                    <form method="POST" action="<%=request.getContextPath()%>/listaAlumnos?action=editar">
                         <div class="form-group">
                             <label for="idParticipante" style="color:#F0F8FF">ID</label>
                             <input class="form-control" type="text" disabled name="idParticipante" id="idParticipante" value="<%=participante.getIdParticipante()%>">

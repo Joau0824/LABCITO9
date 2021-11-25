@@ -36,6 +36,11 @@ public class ParticipantesServlet extends HttpServlet {
                 view = request.getRequestDispatcher("agregarParticipante.jsp");
                 view.forward(request, response);
                 break;
+            case "borrar":
+                String idParticipantee = request.getParameter("idParticipante") == null ? "" : request.getParameter("idParticipante");
+                daoParticipante.eliminarParticipante(Integer.parseInt(idParticipantee));
+                response.sendRedirect(request.getContextPath()+"/listaParticipantes");
+            break;
         }
 
 
@@ -50,7 +55,6 @@ public class ParticipantesServlet extends HttpServlet {
 
         switch (action) {
             case "agregar":
-
                 String nombre = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
                 String apellido = request.getParameter("apellido") != null ? request.getParameter("apellido") : "";
                 String edad = request.getParameter("edad") != null ? request.getParameter("edad") : "";
@@ -63,17 +67,19 @@ public class ParticipantesServlet extends HttpServlet {
                 daoParticipante.anadirParticipante(nombre, apellido, edad1, genero, idpais);
                 response.sendRedirect(request.getContextPath()+"/listaParticipantes");
                 break;
-            case "editar":
 
-                String idPaisstr = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
-                String nombre1 = request.getParameter("nombrePais") != null ? request.getParameter("nombrePais") : "";
-                String poblacionStr1 = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
-                String tamanioStr1 = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
-                int idPais = Integer.parseInt(idPaisstr);
-                int poblacion1 = Integer.parseInt(poblacionStr1);
-                double tamanio1 = Double.parseDouble(tamanioStr1);
-                daoPaises.actualizarPais(idPais,nombre1,poblacion1,tamanio1);
-                response.sendRedirect(request.getContextPath()+"");
+            case "editar":
+                String idParticipante =request.getParameter("idParticipante") != null ? request.getParameter("idParticipante"):"";
+                int idParticipante2=Integer.parseInt(idParticipante);
+                String nombre2 = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
+                String apellido2 = request.getParameter("apellido") != null ? request.getParameter("apellido") : "";
+                String edad2 = request.getParameter("edad") != null ? request.getParameter("edad") : "";
+                String pais2 = request.getParameter("pais") != null ? request.getParameter("pais") : "";
+                int edad3 = Integer.parseInt(edad2);
+                String genero2 = request.getParameter("genero") != null ? request.getParameter("genero") : "";
+                int idpais2 = daoParticipante.buscarIdpais(pais2);
+                daoParticipante.actualizarParticipante(nombre2,apellido2,edad3,genero2,idpais2,idParticipante2);
+                response.sendRedirect(request.getContextPath()+"/listaParticipantes");
                 break;
         }
     }

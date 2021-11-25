@@ -28,8 +28,8 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Edad</th>
-                                <th>Nacionalidad</th>
                                 <th>Genero</th>
+                                <th>Nacionalidad</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -42,8 +42,8 @@
                                 <td><%=participante.getEdad()%></td>
                                 <td><%=participante.getNacionalidad()%></td>
                                 <td><%=participante.getGenero()%></td>
-                                <td><a class="btn btn-primary" href="<%=request.getContextPath()%>/listaParticipantes?action=formEditar%idParticipante=<%=participante.getIdParticipante()%>"><span class="fa fa-edit"></span></a></td>
-                                <td><a class="btn btn-danger" href="<%=request.getContextPath()%>/listaParticipantes?action=borrar"><span class="fa fa-trash"></span></a></td>
+                                <td><a class="btn btn-primary" href="<%=request.getContextPath()%>/listaParticipantes?action=formEditar&idParticipante=<%=participante.getIdParticipante()%>"><span class="fa fa-edit"></span></a></td>
+                                <td><a class="btn btn-danger" href="<%=request.getContextPath()%>/listaParticipantes?action=borrar&idParticipante=<%=participante.getIdParticipante()%>"><span class="fa fa-trash"></span></a></td>
                             </tr>
                             <%}%>
                         </tbody>

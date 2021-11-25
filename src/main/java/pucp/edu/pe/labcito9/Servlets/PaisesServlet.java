@@ -72,7 +72,6 @@ public class PaisesServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath());
                 break;
             case "editar":
-
                 String idPaisstr = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
                 String nombre1 = request.getParameter("nombrePais") != null ? request.getParameter("nombrePais") : "";
                 String poblacionStr1 = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
