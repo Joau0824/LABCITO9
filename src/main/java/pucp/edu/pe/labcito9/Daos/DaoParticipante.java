@@ -65,16 +65,19 @@ public class DaoParticipante extends BaseDao {
         return listaParticipante;
     }
 
-    public void actualizarParticipante(int idPais, String nombre, int poblacion, double tamanio) {
+    public void actualizarParticipante(String nombre, String apellido,int edad,String genero,int idpais) {
 
 
-        String sentenciaSQL = "update paises set nombre = ?, poblacion = ?, tamanio = ? where idpais = ?";
-
+        String sentenciaSQL = "update participante set nombre = ?, apellido = ?, edad = ?, genero = ?, idpais= ? where idpais = ?";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL)) {
-
-
+            pstmt.setString(1,nombre);
+            pstmt.setString(2,apellido);
+            pstmt.setInt(3,edad);
+            pstmt.setString(4,genero);
+            pstmt.setInt(5,idpais);
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -105,13 +108,12 @@ public class DaoParticipante extends BaseDao {
     public void eliminarParticipante(int idParticipante) {
 
 
-        String sentenciaSQL = "delete from paises where idpais = ?;";
+        String sentenciaSQL = "delete from participante where idparticipante = ?;";
 
         try (Connection connection = this.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sentenciaSQL);) {
             pstmt.setInt(1, idParticipante);
             pstmt.executeUpdate();
-
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -120,12 +122,6 @@ public class DaoParticipante extends BaseDao {
 
     public BParticipante obtenerParticipantePorId(String idParticipante){
 
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         String sentenciaSQL = "select pa.nombre,pa.apellido,pa.edad,p.nombre,pa.genero from participante pa inner join paises p on (p.idpais = pa.idpais) where participanteid = ?";
         try (Connection connection = DriverManager.getConnection(url, user, pass);

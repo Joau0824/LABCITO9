@@ -6,6 +6,7 @@ public class BAlumnos extends BParticipante {
     private double promedioPonderado;
     private String condicion;
     private int idUniversidad;
+    private BParticipante participante;
 
     public BParticipante getParticipante() {
         return participante;
@@ -15,7 +16,6 @@ public class BAlumnos extends BParticipante {
         this.participante = participante;
     }
 
-    private BParticipante participante;
 
 
     public BAlumnos(int codigoAlumno, double promedioPonderado, String condicion, int idUniversidad, BParticipante participante) {
@@ -60,7 +60,6 @@ public class BAlumnos extends BParticipante {
     public void setIdUniversidad(int idUniversidad) {
         this.idUniversidad = idUniversidad;
     }
-
 
 
 }
