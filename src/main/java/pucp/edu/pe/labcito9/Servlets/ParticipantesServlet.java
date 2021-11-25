@@ -63,6 +63,18 @@ public class ParticipantesServlet extends HttpServlet {
                 daoParticipante.anadirParticipante(nombre, apellido, edad1, genero, idpais);
                 response.sendRedirect(request.getContextPath()+"/listaParticipantes");
                 break;
+            case "editar":
+
+                String idPaisstr = request.getParameter("idPais") != null ? request.getParameter("idPais"):"";
+                String nombre1 = request.getParameter("nombrePais") != null ? request.getParameter("nombrePais") : "";
+                String poblacionStr1 = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
+                String tamanioStr1 = request.getParameter("tamanio") != null ? request.getParameter("tamanio") : "";
+                int idPais = Integer.parseInt(idPaisstr);
+                int poblacion1 = Integer.parseInt(poblacionStr1);
+                double tamanio1 = Double.parseDouble(tamanioStr1);
+                daoPaises.actualizarPais(idPais,nombre1,poblacion1,tamanio1);
+                response.sendRedirect(request.getContextPath()+"");
+                break;
         }
     }
 }
