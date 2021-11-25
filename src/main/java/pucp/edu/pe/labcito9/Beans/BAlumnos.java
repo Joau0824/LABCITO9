@@ -7,17 +7,27 @@ public class BAlumnos extends BParticipante {
     private String condicion;
     private int idUniversidad;
 
+    public BParticipante getParticipante() {
+        return participante;
+    }
 
-    public BAlumnos(int codigoAlumno, double promedioPonderado, String condicion, int idUniversidad) {
+    public void setParticipante(BParticipante participante) {
+        this.participante = participante;
+    }
+
+    private BParticipante participante;
+
+
+    public BAlumnos(int codigoAlumno, double promedioPonderado, String condicion, int idUniversidad, BParticipante participante) {
         this.codigoAlumno = codigoAlumno;
         this.promedioPonderado = promedioPonderado;
         this.condicion = condicion;
         this.idUniversidad = idUniversidad;
+        this.participante = participante;
     }
 
     public BAlumnos() {
     }
-
 
     public int getCodigoAlumno() {
         return codigoAlumno;
